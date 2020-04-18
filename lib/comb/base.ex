@@ -1,4 +1,5 @@
 defmodule Comb.Base do
+
   def satisfy(parser, acceptor) do
     fn input ->
       with {:ok, term, rest} <- parser.(input) do
@@ -25,6 +26,10 @@ defmodule Comb.Base do
     end
   end
 
+  def choice(parser, parsers) do
+    sequence(parser, choice(parsers))
+  end
+
   def sequence(parsers) do
     fn input ->
       case parsers do
@@ -40,12 +45,20 @@ defmodule Comb.Base do
     end
   end
 
+  def sequence(parser, other_parser) do
+    sequence([parser, other_parser])
+  end
+
   def ignore(parser) do
     fn input ->
       with {:ok, _term, rest} <- parser.(input) do
         {:ok, [], rest}
       end
     end
+  end
+
+  def ignore(parser, other_parser) do
+    sequence(parser, ignore(other_parser))
   end
 
   def tag(parser, tag) do
@@ -63,6 +76,10 @@ defmodule Comb.Base do
         {:error, _} -> {:ok, [], input}
       end
     end
+  end
+
+  def optional(parser, other_parser) do
+    sequence([parser, optional(other_parser)])
   end
 
   def concat(parser, other_parser) do
@@ -97,6 +114,10 @@ defmodule Comb.Base do
     end
   end
 
+  def lazy(parser, combinator) do
+    sequence([parser, lazy(combinator)])
+  end
+
   def map(parser, mapper) when is_function(mapper) do
     fn input ->
       with {:ok, term, rest} <- parser.(input) do
@@ -125,4 +146,9 @@ defmodule Comb.Base do
       end
     end
   end
+
+  def repeat(parser, other_parser) do
+    sequence([parser, repeat(other_parser)])
+  end
+
 end

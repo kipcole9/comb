@@ -25,6 +25,10 @@ defmodule Comb.Text.Unicode do
     end
   end
 
+  def string(parser, expected) do
+    sequence(parser, string(expected))
+  end
+
   def digit do
     satisfy(char(), fn
       char when match?(char, "[:Nd:]") -> true
