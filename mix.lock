@@ -1,0 +1,6 @@
+%{
+  "ex_unicode": {:hex, :ex_unicode, "1.5.0", "78541349402d395a9c01c076659c4610dd93031e4021427414adc3b835a9a824", [:mix], [], "hexpm", "92a79acde664afcecb6659574c05f755b7bceea482f5526a34f6799091e1e3b7"},
+  "nimble_parsec": {:hex, :nimble_parsec, "0.5.3", "def21c10a9ed70ce22754fdeea0810dafd53c2db3219a0cd54cf5526377af1c6", [:mix], [], "hexpm", "589b5af56f4afca65217a1f3eb3fee7e79b09c40c742fddc1c312b3ac0b3399f"},
+  "unicode_guards": {:hex, :unicode_guards, "0.3.0", "72d26432ec2a2b40588b141c5f7e6de5060ad3fc4cce8ec15fcf4d5a4247f26b", [:mix], [{:nimble_parsec, "~> 0.5", [hex: :nimble_parsec, repo: "hexpm", optional: false]}, {:unicode_set, "~> 0.5", [hex: :unicode_set, repo: "hexpm", optional: false]}], "hexpm", "d814a1a97608109ee6f8aa69d818cc4c213ee00c0034de43f113fe32acad07f0"},
+  "unicode_set": {:hex, :unicode_set, "0.5.1", "17433e103392a863e7ec3e4be330e23186daec986b46d28c5f255631ca11bc05", [:mix], [{:ex_unicode, "~> 1.5", [hex: :ex_unicode, repo: "hexpm", optional: false]}, {:nimble_parsec, "~> 0.5", [hex: :nimble_parsec, repo: "hexpm", optional: false]}], "hexpm", "6cd855f958152edd7cb06af05763ff3c4831970ba2bb872f2f1e78c2d99eb7b1"},
+}
